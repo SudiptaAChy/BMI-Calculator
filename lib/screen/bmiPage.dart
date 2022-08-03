@@ -12,8 +12,10 @@ class BmiPage extends StatefulWidget {
 class _BmiPageState extends State<BmiPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Text("Hello"),
+    return SafeArea(
+      child: Scaffold(
+        body: const Text("Hello"),
+      ),
     );
   }
 }
