@@ -12,6 +12,9 @@ class BmiPage extends StatefulWidget {
 class _BmiPageState extends State<BmiPage> {
   TextEditingController weightController = new TextEditingController();
   TextEditingController heightController = new TextEditingController();
+
+  String bmi = "";
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,6 +64,10 @@ class _BmiPageState extends State<BmiPage> {
                   primary: Colors.green,
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(bmi),
             ],
           ),
         ),
@@ -68,5 +75,12 @@ class _BmiPageState extends State<BmiPage> {
     );
   }
 
-  void calculatePress() {}
+  void calculatePress() {
+    int weight = int.parse(weightController.text.trim());
+    double height = int.parse(heightController.text.trim()) / 100;
+    double bmiResult = weight / (height * height);
+    setState(() {
+      bmi = "Your BMI is " + bmiResult.toStringAsFixed(2);
+    });
+  }
 }
